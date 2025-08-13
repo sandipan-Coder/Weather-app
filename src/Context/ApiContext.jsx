@@ -5,12 +5,13 @@ export const ApiContext = createContext();
 export const ApiProvider = ({ children }) => {
 
     const [data, setData] = useState({});
+    const apiKey = import.meta.env.VITE_API_KEY;
 
     const aqureInformation = async (place) => {
         
         try {
 
-            const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=f285f3c1a91e49a891c185747251707&q=${place}&aqi=yes`);
+            const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${place}&aqi=yes`);
             const information = await response.json();
             setData(information);
 
